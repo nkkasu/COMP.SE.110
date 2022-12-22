@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.sothawo.mapjfx.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="708.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.tuni.monitor.controllers.CoordinateSelectionController">
+   <children>
+      <Label layoutX="64.0" layoutY="14.0" prefHeight="36.0" prefWidth="446.0" text="Coordinate selection">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="54.0" layoutY="122.0" spacing="40.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="122.0">
+         <children>
+            <MapView fx:id="mapView" prefHeight="558.0" prefWidth="685.0" HBox.hgrow="ALWAYS" />
+            <Group>
+               <children>
+                  <TextField fx:id="latMinField" layoutX="3.0" layoutY="136.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <TextField fx:id="lonMinField" layoutX="112.0" layoutY="136.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <TextField fx:id="latMaxField" layoutX="3.0" layoutY="186.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <TextField fx:id="lonMaxField" layoutX="112.0" layoutY="186.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <Label layoutX="3.0" layoutY="119.0" prefHeight="17.0" prefWidth="61.0" text="Lat min" />
+                  <Label layoutX="112.0" layoutY="119.0" prefHeight="17.0" prefWidth="61.0" text="Lon min" />
+                  <Label layoutX="3.0" layoutY="169.0" prefHeight="17.0" prefWidth="61.0" text="Lat max" />
+                  <Label layoutX="112.0" layoutY="169.0" prefHeight="17.0" prefWidth="61.0" text="Lon max" />
+                  <Label layoutX="4.0" layoutY="77.0" prefHeight="27.0" prefWidth="203.0" text="Extent Coordinates">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="271.0" prefHeight="27.0" prefWidth="191.0" text="Point Coordinates">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="latPointField" layoutX="3.0" layoutY="323.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <TextField fx:id="lonPointField" layoutX="112.0" layoutY="323.0" onKeyTyped="#coordinateFieldKeyTyped" prefHeight="25.0" prefWidth="92.0" stylesheets="@../stylesheets/mainwindow_style.css" />
+                  <Label layoutX="3.0" layoutY="306.0" prefHeight="17.0" prefWidth="61.0" text="Lat" />
+                  <Label layoutX="112.0" layoutY="306.0" prefHeight="17.0" prefWidth="61.0" text="Lon" />
+                  <Button layoutX="42.0" mnemonicParsing="false" onAction="#handleSavePreferences" text="Save Preferences" />
+                  <Button layoutX="60.0" layoutY="222.0" mnemonicParsing="false" onAction="#onSetExtentCoords" prefHeight="25.0" prefWidth="78.0" text="Set" />
+                  <Button layoutX="60.0" layoutY="359.0" mnemonicParsing="false" onAction="#onSetPointCoords" prefHeight="25.0" prefWidth="78.0" text="Set" />
+               </children>
+            </Group>
+         </children>
+      </HBox>
+      <Label layoutX="64.0" layoutY="680.0" prefHeight="17.0" prefWidth="117.0" text="Mouse over" AnchorPane.bottomAnchor="11.0" />
+      <Label fx:id="mouseOverCoordsLabel" layoutX="202.0" layoutY="680.0" prefHeight="17.0" prefWidth="324.0" text="0.00000, 0.00000" AnchorPane.bottomAnchor="11.0" />
+      <Label layoutX="64.0" layoutY="59.0" prefHeight="59.0" prefWidth="407.0" text="Control Click + Drag to select an extent&#10;Click to select a single point" />
+   </children>
+</AnchorPane>

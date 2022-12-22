@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.tuni.monitor.mainwindow.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.tuni.monitor.controllers.MainWindowController">
+   <Pane id="side-panel" layoutY="188.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../stylesheets/mainwindow_style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutY="139.0" prefHeight="300.0" prefWidth="200.0">
+         <RadioToggleButton id="side-bar-button" fx:id="coordinateSelectionButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="51.0" prefWidth="200.0" selected="true" stylesheets="@../stylesheets/mainwindow_style.css" text="Coordinates" textAlignment="CENTER">
+            <toggleGroup>
+               <ToggleGroup fx:id="sidePanelToggleGroup" />
+            </toggleGroup>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </RadioToggleButton>
+         <RadioToggleButton id="side-bar-button" fx:id="roadDataButton" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="51.0" prefWidth="200.0" stylesheets="@../stylesheets/mainwindow_style.css" text="Road Data" textAlignment="CENTER" toggleGroup="$sidePanelToggleGroup" />
+         <RadioToggleButton id="side-bar-button" fx:id="weatherDataButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="51.0" prefWidth="200.0" stylesheets="@../stylesheets/mainwindow_style.css" text="Weather Data" textAlignment="CENTER" toggleGroup="$sidePanelToggleGroup" />
+         <RadioToggleButton id="side-bar-button" fx:id="combinedDataButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="51.0" prefWidth="200.0" stylesheets="@../stylesheets/mainwindow_style.css" text="Combined" textAlignment="CENTER" toggleGroup="$sidePanelToggleGroup" />
+         <RadioToggleButton id="side-bar-button" fx:id="combinedForecastButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="51.0" prefWidth="200.0" stylesheets="@../stylesheets/mainwindow_style.css" text="Forecast" textAlignment="CENTER" toggleGroup="$sidePanelToggleGroup" />
+      </VBox>
+   </Pane>
+   <Pane id="header" layoutX="54.0" prefHeight="51.0" prefWidth="969.0" stylesheets="@../stylesheets/mainwindow_style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label layoutX="14.0" layoutY="11.0" prefHeight="30.0" prefWidth="166.0" text="Monitor" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="195.0" layoutY="11.0" prefHeight="30.0" prefWidth="884.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="142.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="347.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="32.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="172.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="227.0" minWidth="10.0" prefWidth="194.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="30.0" prefWidth="147.0" text="Selected Extent:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedExtentLabel" prefHeight="30.0" prefWidth="355.0" text="N/A" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="113.0" text="Selected Point:" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedPointLabel" layoutX="448.0" layoutY="10.0" prefHeight="30.0" prefWidth="191.0" text="N/A" textFill="WHITE" GridPane.columnIndex="4">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </Pane>
+   <StackPane fx:id="contentArea" layoutX="200.0" layoutY="51.0" prefHeight="646.0" prefWidth="1075.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
+   <RadioToggleButton id="settings-button" fx:id="settingsButton" alignment="TOP_LEFT" layoutX="150.0" mnemonicParsing="false" onAction="#onSidePanelButtonClicked" prefHeight="50.0" prefWidth="50.0" stylesheets="@../stylesheets/mainwindow_style.css" textAlignment="CENTER" toggleGroup="$sidePanelToggleGroup" AnchorPane.bottomAnchor="0.0" />
+</AnchorPane>

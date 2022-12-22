@@ -1,0 +1,11 @@
+module:fi.tuni.monitor
+fi.tuni.monitor.controllers
+fi.tuni.monitor.data
+fi.tuni.monitor.mainwindow
+fi.tuni.monitor.models
+fi.tuni.monitor.roadapi
+fi.tuni.monitor.roadapi.api
+fi.tuni.monitor.roadapi.auth
+fi.tuni.monitor.roadapi.model
+fi.tuni.monitor.saveddata
+fi.tuni.monitor.weatherapi

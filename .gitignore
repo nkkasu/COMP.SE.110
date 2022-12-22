@@ -1,0 +1,9 @@
+target/
+.vscode/
+.idea/
+data/*
+*.iml
+*~
+mvnw*
+out/
+META-INF/
