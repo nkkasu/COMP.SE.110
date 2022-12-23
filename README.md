@@ -1,6 +1,6 @@
 ﻿# Desktop Client visualizing road and weather data
 
-This is a school project made for COMP.SE.110 Software Design course.
+This is a school project made in a group of 4 for COMP.SE.110 Software Design course.
 
 Visualize weather and road data fetched from Digitraffic and The Finnish Meteorological Institute.
 
