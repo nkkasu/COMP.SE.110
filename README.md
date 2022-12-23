@@ -4,6 +4,11 @@ This is a school project made for COMP.SE.110 Software Design course.
 
 Visualize weather and road data fetched from Digitraffic and The Finnish Meteorological Institute.
 
+![image](https://user-images.githubusercontent.com/100607632/209245924-2741e797-d16d-4431-ac4e-cba873c4ac3a.png)
+
+![image](https://user-images.githubusercontent.com/100607632/209245856-fdddba2d-952d-40ac-86ea-9fa77271fbe7.png)
+
+
 ## Using the application
 The application starts up with a coordinate selection tab. You can select coordinates areas by ctrl click + dragging
 the map view. Alternative you can type in your coordinates and use the "set" button. 
