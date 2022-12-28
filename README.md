@@ -4,9 +4,9 @@ This is a school project made in a group of 4 for COMP.SE.110 Software Design co
 
 Visualize weather and road data fetched from Digitraffic and The Finnish Meteorological Institute.
 
-![image](https://user-images.githubusercontent.com/100607632/209245924-2741e797-d16d-4431-ac4e-cba873c4ac3a.png)
+![image](https://user-images.githubusercontent.com/100607632/209853034-03755159-c4a1-4b1e-92c9-b68a08caf544.png)
 
-![image](https://user-images.githubusercontent.com/100607632/209245856-fdddba2d-952d-40ac-86ea-9fa77271fbe7.png)
+![image](https://user-images.githubusercontent.com/100607632/209853089-a37ae5fe-c740-40e6-a560-f825a9b78425.png)
 
 
 ## Using the application
