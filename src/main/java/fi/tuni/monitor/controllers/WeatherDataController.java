@@ -13,6 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.plot.XYPlot;
@@ -21,12 +25,15 @@ import org.jfree.chart.renderer.xy.XYItemRenderer;
 
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
 
@@ -61,6 +68,10 @@ public class WeatherDataController implements Initializable, SaveablePreferences
     private Label infoLabel;
     @FXML
     private Button weatherFetchButton;
+    @FXML
+    private ImageView questionMark;
+    @FXML
+    private ImageView questionMark2;
     WeatherDataModel weatherDataModel = null;
     BoundingCoordinates coordinates = null;
 
@@ -117,6 +128,23 @@ public class WeatherDataController implements Initializable, SaveablePreferences
         cloudinessRenderer = chart2.getXYPlot().getRenderer();
         cloudinessRenderer.setSeriesPaint(0, Color.MAGENTA);
         setCloudinessVisibility();
+    }
+
+    /**
+     * Sets tooltips for this view.
+     */
+    private void setTooltips() {
+        Tooltip temperatureTooltip = new Tooltip();
+        temperatureTooltip.setText("With temperature and wind data, average, minimum and maximum temperature may be viewed along with wind speed.");
+        temperatureTooltip.setShowDelay(Duration.ZERO);
+        Tooltip.install(questionMark, temperatureTooltip);
+        temperatureTooltip.setFont(new Font(18));
+
+        Tooltip cloudTooltip = new Tooltip();
+        cloudTooltip.setText("With cloud data you can view data on cloud coverage over time.");
+        cloudTooltip.setShowDelay(Duration.ZERO);
+        cloudTooltip.setFont(new Font(18));
+        Tooltip.install(questionMark2, cloudTooltip);
     }
 
     /**
@@ -187,13 +215,14 @@ public class WeatherDataController implements Initializable, SaveablePreferences
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.coordinates = CoordinateSelectionModel.getSelectedExtent();
-
         WeatherDataPreferences preferences = null;
         try {
             preferences = (WeatherDataPreferences) SerializationUtil.deserialize(preferencesFile);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Weather data preferences not read!");
         }
+
+        setTooltips();
 
         if (preferences != null) {
             weatherDateFrom.setValue(preferences.weatherDateFromValue());

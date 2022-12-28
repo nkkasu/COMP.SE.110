@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import org.jfree.chart.fx.ChartViewer?>
+
 <AnchorPane prefHeight="646.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.tuni.monitor.controllers.CombinedForecastController">
     <Group layoutX="47.0" layoutY="50.0" />
     <HBox alignment="CENTER" layoutX="293.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -22,26 +31,32 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints prefHeight="30.0" vgrow="NEVER" />
+         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <ChartViewer fx:id="combinedChart" prefHeight="420.0" prefWidth="340.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+        <ChartViewer fx:id="combinedChart" prefHeight="420.0" prefWidth="340.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></ChartViewer>
-      <ChartViewer fx:id="conditionPieChart" layoutX="10.0" layoutY="10.0" prefHeight="420.0" prefWidth="340.0" GridPane.rowIndex="2">
+      <ChartViewer fx:id="conditionPieChart" layoutX="10.0" layoutY="10.0" prefHeight="420.0" prefWidth="340.0" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></ChartViewer>
-        <Label alignment="CENTER" text="Combined Forecast graph ?" GridPane.halignment="CENTER">
+        <Label alignment="CENTER" text="Combined Forecast graph" GridPane.halignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
-            <tooltip>
-                <Tooltip text="With combined forecast view you can fetch forecasts of weather data choices and view them in the same pane as different forecasts related to road conditions." />
-            </tooltip>
         </Label>
+      <ImageView fx:id="questionMark" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+         <image>
+            <Image url="@../icons/blue-question-mark-icon.png" />
+         </image>
+         <GridPane.margin>
+            <Insets left="250.0" />
+         </GridPane.margin>
+      </ImageView>
     </GridPane>
     <GridPane layoutX="70.0" layoutY="56.0" prefHeight="96.0" prefWidth="652.0">
         <columnConstraints>

@@ -14,10 +14,10 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.fx.ChartViewer;
@@ -59,6 +59,8 @@ public class CombinedDataController implements Initializable, SaveablePreference
     private LocalDateTime getDatePickerStartOfDay(DatePicker picker) {
         return picker.getValue().atStartOfDay();
     }
+    @FXML
+    private ImageView questionMark;
 
     /**
      * Updates the CombinedDataModel according to user's selections in UI.
@@ -110,7 +112,18 @@ public class CombinedDataController implements Initializable, SaveablePreference
         combinedChart.setChart(chart);
         fetchButton.setDisable(false);
     }
-
+    /**
+     * Sets tooltips for this view.
+     */
+    private void setTooltips() {
+        Tooltip combinedTooltip = new Tooltip();
+        combinedTooltip.setText("You can pick a specific road maintenance task type count to be shown along a specific weather type value in a time-series.");
+        combinedTooltip.setMaxWidth(700);
+        combinedTooltip.setWrapText(true);
+        combinedTooltip.setShowDelay(Duration.ZERO);
+        Tooltip.install(questionMark, combinedTooltip);
+        combinedTooltip.setFont(new Font(18));
+    }
     /**
      * Event handler for save preferences button.
      * Saves weather visualization preferences to a file.
@@ -145,6 +158,7 @@ public class CombinedDataController implements Initializable, SaveablePreference
             System.err.println("Combined data preferences not read!");
         }
 
+        setTooltips();
         weatherTypePicker.setItems(FXCollections.observableArrayList(Arrays.asList("Temperature", "Clouds", "Windspeed")));
         taskTypePicker.setItems(FXCollections.observableArrayList(MaintenanceTrackingPropertiesV1.TasksEnum.values()));
         taskTypePicker.converterProperty().setValue(new StringConverter<>() {

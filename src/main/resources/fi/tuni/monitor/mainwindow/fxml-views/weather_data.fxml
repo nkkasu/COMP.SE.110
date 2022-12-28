@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.jfree.chart.fx.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.jfree.chart.fx.ChartViewer?>
 
 <AnchorPane prefHeight="646.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.tuni.monitor.controllers.WeatherDataController">
    <Group layoutX="47.0" layoutY="50.0">
@@ -33,7 +44,7 @@
          </rowConstraints>
          <CheckBox fx:id="windCheckBox" mnemonicParsing="false" onAction="#setWindVisibility" text="Show wind" GridPane.rowIndex="1" />
          <CheckBox fx:id="minMaxCheckBox" mnemonicParsing="false" onAction="#setMinMaxVisibility" prefHeight="18.0" prefWidth="235.0" text="Show Min/Max temperatures" GridPane.columnIndex="1" />
-         <Button mnemonicParsing="false" fx:id="weatherFetchButton" onAction="#updateCharts" text="Fetch data" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+         <Button fx:id="weatherFetchButton" mnemonicParsing="false" onAction="#updateCharts" text="Fetch data" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2" />
          <CheckBox fx:id="temperatureCheckBox" mnemonicParsing="false" onAction="#setTemperatureVisibility" text="Show temperature" />
          <CheckBox fx:id="cloudCheckBox" mnemonicParsing="false" onAction="#setCloudinessVisibility" text="Show clouds" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          <Button mnemonicParsing="false" onAction="#handleSavePreferences" prefHeight="24.0" prefWidth="155.0" text="Save Preferences" GridPane.rowIndex="3" />
@@ -57,21 +68,32 @@
       </rowConstraints>
       <ChartViewer fx:id="temperatureWindChart" prefHeight="420.0" prefWidth="340.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
       <ChartViewer fx:id="cloudinessChart" prefHeight="420.0" prefWidth="340.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-      <Label alignment="CENTER" text="Temperature/Wind Data ?" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" text="Temperature/Wind Data" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-         <tooltip>
-            <Tooltip text="With temperature and wind data, average, minimum and maximum temperature may be viewed along with wind speed." />
-         </tooltip>
       </Label>
-      <Label alignment="CENTER" text="Cloud Data ?" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" text="Cloud Data" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-         <tooltip>
-            <Tooltip text="With cloud data you can view data on cloud coverage over time." />
-         </tooltip>
       </Label>
+      <ImageView fx:id="questionMark" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="3.0" left="235.0" />
+         </GridPane.margin>
+         <image>
+            <Image url="@../icons/blue-question-mark-icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="questionMark2" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+         <image>
+            <Image url="@../icons/blue-question-mark-icon.png" />
+         </image>
+
+         <GridPane.margin>
+            <Insets bottom="3.0" left="122.0" />
+         </GridPane.margin>
+      </ImageView>
    </GridPane>
 </AnchorPane>

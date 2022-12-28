@@ -6,6 +6,7 @@ import fi.tuni.monitor.models.MaintenanceTaskModel;
 import fi.tuni.monitor.models.RoadConditionForecastModel;
 import fi.tuni.monitor.models.TrafficMessageModel;
 import fi.tuni.monitor.roadapi.model.MaintenanceTrackingPropertiesV1;
+import fi.tuni.monitor.roadapi.model.RestrictionOldV3;
 import fi.tuni.monitor.saveddata.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -13,6 +14,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 import org.controlsfx.control.CheckComboBox;
 import org.jfree.chart.ChartFactory;
@@ -77,7 +81,12 @@ public class RoadDataController implements Initializable, SaveablePreferences {
     @FXML
     private Button maintenanceFetchButton;
     private BoundingCoordinates coordinates = null;
-
+    @FXML
+    private ImageView questionMark1;
+    @FXML
+    private ImageView questionMark2;
+    @FXML
+    private ImageView questionMark3;
     private MaintenanceTaskModel maintenanceTaskModel;
     private RoadConditionForecastModel roadConditionForecastModel;
     private TrafficMessageModel trafficMessageModel;
@@ -100,6 +109,39 @@ public class RoadDataController implements Initializable, SaveablePreferences {
                 "", this.maintenanceTaskModel.getPieChartData());
     }
 
+    /**
+     * Sets tooltips of this window.
+     */
+    private void setTooltips() {
+        Tooltip roadTooltip1 = new Tooltip();
+        roadTooltip1.setText("With road maintenance tasks you can fetch data about road maintenance tasks" +
+                " between the specified date range. You can either view a single task's proportion and " +
+                "count of all tasks as a pie chart, or you can check the box to fetch data about a specific" +
+                " task type and you will receive a bar chart about that task's occurences on specific days");
+        roadTooltip1.setWrapText(true);
+        roadTooltip1.setShowDelay(Duration.ZERO);
+        Tooltip.install(questionMark1, roadTooltip1);
+        roadTooltip1.setFont(new Font(18));
+        roadTooltip1.setMaxWidth(700);
+
+        Tooltip roadTooltip2 = new Tooltip();
+        roadTooltip2.setText("With road condition forecast you may view proportion of values " +
+                "for a certain road condition type certain hours into the future.");
+        roadTooltip2.setShowDelay(Duration.ZERO);
+        roadTooltip2.setFont(new Font(18));
+        roadTooltip2.setMaxWidth(700);
+        roadTooltip2.setWrapText(true);
+        Tooltip.install(questionMark2, roadTooltip2);
+
+        Tooltip roadTooltip3 = new Tooltip();
+        roadTooltip3.setText("With traffic messages you can view info about traffic messages " +
+                "in an area that have been in effect certain amount of hours in the past.");
+        roadTooltip3.setShowDelay(Duration.ZERO);
+        roadTooltip3.setFont(new Font(18));
+        roadTooltip3.setMaxWidth(700);
+        roadTooltip3.setWrapText(true);
+        Tooltip.install(questionMark3, roadTooltip3);
+    }
     /**
      * Handle update of road maintenance tasks visualization async
      */
@@ -289,6 +331,8 @@ public class RoadDataController implements Initializable, SaveablePreferences {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Road data preferences not read!");
         }
+
+        setTooltips();
 
         taskTypePicker.setItems(FXCollections.observableArrayList(MaintenanceTrackingPropertiesV1.TasksEnum.values()));
         taskTypePicker.converterProperty().setValue(new StringConverter<>() {

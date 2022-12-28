@@ -14,6 +14,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
@@ -56,6 +60,8 @@ public class CombinedForecastController implements Initializable, SaveablePrefer
     public ChoiceBox<Integer> hoursPicker;
     @FXML
     public ChoiceBox<RoadConditionForecast.ConditionType> conditionTypePicker;
+    @FXML
+    public ImageView questionMark;
     /**
      * Event handler for save preferences button.
      * Saves weather visualization preferences to a file.
@@ -103,6 +109,20 @@ public class CombinedForecastController implements Initializable, SaveablePrefer
         chart.getLegend().setHorizontalAlignment(HorizontalAlignment.RIGHT);
         return chart;
     }
+    /**
+     * Sets tooltips for this view.
+     */
+    private void setTooltips() {
+        Tooltip combinedTooltip = new Tooltip();
+        combinedTooltip.setText("With combined forecast view you can fetch forecasts of weather data choices and " +
+                "view them in the same pane as different forecasts related to road conditions.");
+        combinedTooltip.setMaxWidth(700);
+        combinedTooltip.setWrapText(true);
+        combinedTooltip.setShowDelay(Duration.ZERO);
+        Tooltip.install(questionMark, combinedTooltip);
+        combinedTooltip.setFont(new Font(18));
+    }
+
 
     /**
      * Update the state of charts after updating data
@@ -164,6 +184,7 @@ public class CombinedForecastController implements Initializable, SaveablePrefer
             System.err.println("Combined forecast preferences not read!");
         }
 
+        setTooltips();
         weatherTypePicker.setItems(FXCollections.observableArrayList(Arrays.asList("Temperature", "Windspeed")));
         hoursPicker.setItems(FXCollections.observableArrayList(Arrays.asList(2, 4, 6, 12)));
 
